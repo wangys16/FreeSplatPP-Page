@@ -1,0 +1,341 @@
+<html><head>
+  <meta charset="utf-8">
+  <meta name="description" content="NeRFusion: Fusing Radiance Fields for Large-Scale Scene Reconstruction.">
+  <meta name="keywords" content="NeRFusion, neural rendering">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NeRFusion: Fusing Radiance Fields for Large-Scale Scene Reconstruction</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer="" src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1105.0" data-gr-ext-installed="">
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">NeRFusion: Fusing Radiance Fields for Large-Scale Scene Reconstruction</h1>
+          <h2>CVPR 2022 (Oral)</h2>
+          <p class="abstract"> Large-Scale scene reconstruction and neural rendering from direct inference. </p>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Xiaoshuai Zhang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Sai Bi</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Kalyan Sunkavalli</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Hao Su</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Zexiang Xu</a><sup>2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>UC San Diego. &nbsp;&nbsp;</span>
+            <span class="author-block"><sup>2</sup>Adobe Research. &nbsp;&nbsp;</span>
+          </div>
+          <!-- <h1 style="font-size:24px;font-weight:bold">CVPR 2021</h1> -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+  <!--             <span class="link-block">
+                <a href="static/paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2203.11283" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- supp PDF Link. -->
+<!--               <span class="link-block">
+                <a href="static/supp.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supp</span>
+                </a>
+              </span> -->
+              <!-- Video Link.
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/jetd1/NeRFusion" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (soon)</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-bird0" align="center">
+          <!-- <video poster="" id="bird0" autoplay controls muted loop height="100%">
+            <source src="static/videos/bird0_5_14.mp4"
+                    type="video/mp4">
+          </video> -->
+          <img src="static/images/teaser.png" width="75%" alt="overview_image">
+        </div>
+      </div>
+    </div>
+  </div>
+   	<div align="center">
+		<!-- *Results above are generated using our single pretrained model without per-scene optimization -->
+	</div>
+</section>
+
+
+<!--
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <video id="teaser" autoplay muted loop height="100%">
+          <source src="https://storage.googleapis.com/nerfies-public/videos/teaser.mp4"
+                  type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf">D-NeRF</span> turns selfie videos from your phone into free-viewpoint
+          portraits (<i>nerfies</i>).
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+
+<section class="section">
+  <div class="container">
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            While NeRF has shown great success for neural reconstruction and rendering, its limited MLP capacity and long per-scene optimization times make it challenging to model large-scale indoor scenes. In contrast, classical 3D reconstruction methods can handle large-scale scenes but do not produce realistic renderings. We propose NeRFusion, a method that combines the advantages of NeRF and TSDF-based fusion techniques to achieve efficient large-scale reconstruction and photo-realistic rendering. We process the input image sequence to predict per-frame local radiance fields via direct network inference. These are then fused using a novel recurrent neural network that incrementally reconstructs a global, sparse scene representation in real-time at 22 fps. This volume can be further fine-tuned to boost rendering quality. We demonstrate that NeRFusion achieves state-of-the-art quality on both large-scale indoor and small-scale object scenes, with substantially faster reconstruction speed than NeRF and other recent methods.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/ Abstract. -->
+
+<div align="center" style="margin-top:80px;">
+<img style="height: auto; width: 75%; object-fit: contain" src="static/images/pipeline.png" alt="overview_image">
+</div>
+
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 align="center" class="title is-2">Results</h2>
+
+        <!-- ScanNet Main -->
+        <h3 align="center" style="margin-top:80px;" class="title is-4">ScanNet</h3>
+        <div class="content has-text-justified">
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video" controls="" muted="" width="65%">
+            <source src="static/videos/scannet_main.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- ScanNet Main -->
+
+        <!-- ScanNet Bird -->
+        <h3 align="center" style="margin-top:80px;" class="title is-4">Bird View Rendering</h3>
+        <div class="content has-text-justified">
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video" controls="" muted="" width="65%">
+            <source src="static/videos/scannet_bird.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- ScanNet Bird -->
+
+        <!-- ScanNet Mesh -->
+        <h3 align="center" style="margin-top:80px;" class="title is-4">Extracted Mesh from Fine-Tuned Model</h3>
+        <div class="content has-text-justified">
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video" controls="" muted="" width="65%">
+            <source src="static/videos/scannet_mesh.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- ScanNet Mesh -->
+
+        <!-- NeRF Main -->
+        <h3 align="center" style="margin-top:80px;" class="title is-4">NeRF Synthetic</h3>
+        <div class="content has-text-justified">
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video" controls="" muted="" width="65%">
+            <source src="static/videos/nerf_synth.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- NeRF Main -->
+
+        <!-- Custom -->
+        <!-- <h3 align="center" style="margin-top:80px;"  class="title is-4">Custom Sequence</h3>
+        <div class="content has-text-justified">
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                  controls
+                  muted
+                  width="65%">
+            <source src="static/videos/custom_seq.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!-- Custom -->
+
+        <!-- Custom -->
+        <h3 align="center" style="margin-top:80px;" class="title is-4">More results coming</h3>
+        <!-- Custom -->
+
+        <!-- Ours vs. LLFF -->
+        <!-- <h3 align="center" class="title is-4">ScanNet </h3>
+        <div class="content has-text-justified">
+        </div>
+        <div class="content has-text-centered">
+          <video poster='static/images/llff_ours_preview.png'
+                 id="replay-video"
+                 controls
+                 muted
+                 width="75%">
+            <source src="static/videos/llff_ours.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!-- Ours vs. LLFF -->
+
+        <!-- Ours Finetuned vs. NeRF -->
+        <!-- <h3 align="center" style="margin-top:80px;"  class="title is-4">DTU </h3>
+        <div class="content has-text-justified">
+        </div>
+        <div class="content has-text-centered">
+          <video poster='static/images/nerf_ours_ft_preview.png'
+                 id="replay-video"
+                 controls
+                 muted
+                 width="75%">
+            <source src="static/videos/nerf_ours_ft.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!-- Ours Finetuned vs. NeRF -->
+
+        <!-- Ours Finetuned vs. NeRF -->
+        <!-- <h3 align="center" style="margin-top:80px;"  class="title is-4">Custom Sequences from iPhone </h3>
+        <div class="content has-text-justified">
+        </div>
+        <div class="content has-text-centered">
+          <video poster='static/images/nerf_ours_ft_preview.png'
+                  id="replay-video"
+                  controls
+                  muted
+                  width="75%">
+            <source src="static/videos/nerf_ours_ft.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!-- Ours Finetuned vs. NeRF -->
+
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @article{zhang2022nerfusion,
+        author    = {Zhang, Xiaoshuai and Bi, Sai and Sunkavalli, Kalyan and Su, Hao and Xu, Zexiang},
+        title     = {NeRFusion: Fusing Radiance Fields for Large-Scale Scene Reconstruction},
+        journal   = {CVPR},
+        year      = {2022},
+      }
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div align="center" class="container">
+    <div class="columns is-centered">
+        <div class="content">
+            This website is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+        </div>
+      </div>
+    </div>
+</footer>
+
+
+
+</section></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
