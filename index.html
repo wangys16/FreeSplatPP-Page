@@ -167,27 +167,30 @@
 </section>
 
 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-t0" align="center">
-          <!-- <video poster="" id="bird0" autoplay controls muted loop height="100%">
-            <source src="static/videos/bird0_5_14.mp4"
-                    type="video/mp4">
-          </video> -->
-          <img src="static/images/teaser.png" width="40%" alt="overview_image">
-        </div>
-      </div>
-    </div>
-  </div>
-   	<div align="center">
-		<!-- *Results above are generated using our single pretrained model without per-scene optimization -->
-	</div>
-</section>
+<!--<section class="hero is-small">-->
+<!--  <div class="hero-body">-->
+<!--    <div class="container">-->
+<!--      <div id="results-carousel" class="carousel results-carousel">-->
+<!--        <div class="item item-t0" align="center">-->
+<!--          &lt;!&ndash; <video poster="" id="bird0" autoplay controls muted loop height="100%">-->
+<!--            <source src="static/videos/bird0_5_14.mp4"-->
+<!--                    type="video/mp4">-->
+<!--          </video> &ndash;&gt;-->
+<!--          <img src="static/images/teaser.png" width="40%" alt="overview_image">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--   	<div align="center">-->
+<!--		&lt;!&ndash; *Results above are generated using our single pretrained model without per-scene optimization &ndash;&gt;-->
+<!--	</div>-->
+<!--</section>-->
 
 
 <section class="section">
+  <div align="center" >
+    <img style="height: auto; width: 40%; object-fit: contain" src="static/images/teaser.png" alt="overview_image">
+  </div>
   <div class="container">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -208,15 +211,39 @@
     </div>
   </div>
   <div align="center" style="margin-top:80px;">
-<img style="height: auto; width: 75%; object-fit: contain" src="static/images/overview.png" alt="overview_image">
-</div>
+    <img style="height: auto; width: 75%; object-fit: contain" src="static/images/overview.png" alt="overview_image">
+  </div>
+<!--  -->
+  <section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 align="center" class="title is-2">Results</h2>
+
+        <!-- ScanNet Main -->
+        <h3 align="center" style="margin-top:80px;" class="title is-4">ScanNet</h3>
+        <div class="content has-text-justified">
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video" controls="" muted="" width="65%">
+            <source src="static/videos/SurfelNeRF_video.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- ScanNet Main -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+  </div>
+</section>
+
 </section>
 
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{,
+    <pre><code>@article{gao2023surfelnerf,
   author    = {Gao, Yiming and Cao, Yan-Pei and Shan, Ying },
   title     = {SurfelNeRF: Neural Surfel Radiance Fields for Online Photorealistic Reconstruction of Indoor Scenes},
   journal   = {CVPR},
@@ -228,7 +255,7 @@
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
+    <div align="center" class="content has-text-centered">
       <a class="icon-link"
          href="https://gymat.github.io/SurfelNeRF-web">
         <i class="fas fa-file-pdf"></i>
@@ -237,7 +264,7 @@
 <!--        <i class="fab fa-github"></i>-->
 <!--      </a>-->
     </div>
-    <div class="columns is-centered">
+    <div class="container" align="center">
       <div class="column is-centered">
         <div class="content">
           <p>
