@@ -93,16 +93,16 @@
           <p class="abstract">Large scale online photorealistic reconstruction of indoor scenes. </p>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=uRCc-McAAAAJ&hl=zh-TW">Yiming Gao</a><sup>1</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=uRCc-McAAAAJ&hl=zh-TW">Yiming Gao</a>,</span>
             <span class="author-block">
-              <a href="https://yanpei.me/">Yan-Pei Cao</a><sup>1</sup>,</span>
+              <a href="https://yanpei.me/">Yan-Pei Cao</a>,</span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=4oXBp9UAAAAJ&hl=zh-TW">Ying Shan</a><sup>1</sup>,
+              <a href="https://scholar.google.com/citatins?user=4oXBp9UAAAAJ&hl=zh-TW">Ying Shan</a>,
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>ARC Lab, Tencent PCG</span>
+            <span class="author-block">ARC Lab, Tencent PCG</span>
 <!--            <span class="author-block"><sup>2</sup>Google Research</span>-->
           </div>
 
@@ -210,9 +210,30 @@
       </div>
     </div>
   </div>
-  <div align="center" style="margin-top:80px;">
+<!---->
+  <div class="container" style="margin-top:50px;">
+  <div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+  <h2 class="title is-3">Pipeline</h2>
+  <div class="content has-text-justified">
+  <div align="center" style="margin-top:40px;">
     <img style="height: auto; width: 75%; object-fit: contain" src="static/images/overview.png" alt="overview_image">
   </div>
+    <p>
+    Overview of our SurfelNeRF. Given an online input stream of image sequences, we first reconstruct a surfel representation associated with neural features to build a local neural surfel radiance field for each input keyframe. Then the neural surfel radiance field integration is used to fuse the input local neural surfel radiance field into the global neural surfel radiance field by updating both surfel position and features. More specifically, input local neural surfels associated with global surfels are fused to global surfels with corresponding global ones, and remaining local surfels without corresponding ones are added to the global model. Furthermore, the novel views can be rendered from updated global surfels via our efficient rasterization-guided render. Our proposed rasterization-guided renderer renders color only on the intersection points of ray and surfels, which is faster than volume rendering.
+    </p>
+    <!--  -->
+  <div align="center" style="margin-top:40px;">
+    <img style="height: auto; width: 75%; object-fit: contain" src="static/images/table.png" alt="feat_table">
+  </div>
+    <div align="center">
+      <p>Comparison of representation and features with existing methods.</p>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
 <!--  -->
   <section class="section">
   <div class="container">
