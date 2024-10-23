@@ -195,13 +195,19 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Online reconstructing and rendering of large-scale indoor scenes is a long-standing challenge. SLAM-based methods can  reconstruct 3D scene geometry progressively in real time but can not render photorealistic results.
-            While NeRF-based methods produce promising novel view synthesis results, their long offline optimization time and lack of geometric constraints pose challenges to efficiently handling online input.
-            Inspired by the complementary advantages of classical 3D reconstruction and NeRF, we thus investigate marrying explicit geometric representation with NeRF rendering to achieve efficient online reconstruction and high-quality rendering.
-            We introduce SurfelNeRF, a variant of neural radiance field which employs a flexible and scalable neural surfel representation to store geometric attributes and extracted appearance features from input images.
-            We further extend the conventional surfel-based fusion scheme to progressively integrate incoming input frames into the reconstructed global neural scene representation.
-            In addition, we propose a highly-efficient differentiable rasterization scheme for rendering neural surfel radiance fields, which helps SurfelNeRF achieve 10&times speedups in training and inference time, respectively.
-            Experimental results show that our method achieves the state-of-the-art 23.82 PSNR and 29.58 PSNR on ScanNet in feedforward inference and per-scene optimization settings, respectively.
+            Empowering 3D Gaussian Splatting with generalization ability is appealing. 
+            However, existing generalizable 3D Gaussian Splatting methods are largely confined to narrow-range interpolation between stereo images 
+            due to their heavy backbones, thus lacking the ability to accurately localize 3D Gaussian and support free-view synthesis across wide view range. 
+            In this paper, we present a novel framework FreeSplat that is capable of reconstructing geometrically 
+            consistent 3D scenes from long sequence input towards free-view synthesis.
+            Specifically, we firstly introduce Low-cost Cross-View Aggregation 
+            achieved by constructing adaptive cost volumes among nearby views and aggregating features using a multi-scale structure. 
+            Subsequently, we present the Pixel-wise Triplet Fusion 
+            to eliminate redundancy of 3D Gaussians in overlapping view regions and to aggregate features observed across multiple views. 
+            Additionally, we propose a simple but effective free-view training strategy 
+            that ensures robust view synthesis across broader view range regardless of the number of views.
+            Our empirical results demonstrate state-of-the-art novel view synthesis peformances in both novel view rendered color maps quality and depth maps accuracy across different numbers of input views. 
+            We also show that FreeSplat performs inference more efficiently and can effectively reduce redundant Gaussians, offering the possibility of feed-forward large scene reconstruction without depth priors. 
           </p>
         </div>
       </div>
@@ -211,21 +217,16 @@
   <div class="container" style="margin-top:50px;">
   <div class="columns is-centered has-text-centered">
   <div class="column is-four-fifths">
-  <h2 class="title is-3">Pipeline</h2>
+  <h2 class="title is-3">Framework</h2>
   <div class="content has-text-justified">
   <div align="center" style="margin-top:40px;">
     <img style="height: auto; width: 75%; object-fit: contain" src="static/images/overview.png" alt="overview_image">
   </div>
     <p>
-    Overview of our SurfelNeRF. Given an online input stream of image sequences, we first reconstruct a surfel representation associated with neural features to build a local neural surfel radiance field for each input keyframe. Then the neural surfel radiance field integration is used to fuse the input local neural surfel radiance field into the global neural surfel radiance field by updating both surfel position and features. More specifically, input local neural surfels associated with global surfels are fused to global surfels with corresponding global ones, and remaining local surfels without corresponding ones are added to the global model. Furthermore, the novel views can be rendered from updated global surfels via our efficient rasterization-guided render. Our proposed rasterization-guided renderer renders color only on the intersection points of ray and surfels, which is faster than volume rendering.
-    </p>
+    Framework of FreeSplat. Given input sparse sequence of images, we construct cost volumes between nearby views and predict depth maps and corresponding feature maps, followed by unprojection to Gaussian triplets with 3D positions. 
+      We then propose \textbf{Pixel-aligned Triplet Fusion (PTF)} module, where we progressively aggregate and update local/global Gaussian triplets based on pixel-wise alignment. The global Gaussian triplets can be later decoded into Gaussian parameters.</p>
     <!--  -->
-  <div align="center" style="margin-top:40px;">
-    <img style="height: auto; width: 75%; object-fit: contain" src="static/images/table_in_surfelnerf.png" alt="feat_table">
-  </div>
-    <div align="center">
-      <p>Comparison of representation and features with existing methods.</p>
-    </div>
+  
   </div>
   </div>
   </div>
@@ -239,12 +240,12 @@
         <h2 align="center" class="title is-2">Results</h2>
 
         <!-- ScanNet Main -->
-        <h3 align="center" style="margin-top:80px;" class="title is-4">ScanNet</h3>
+        <h3 align="center" style="margin-top:80px;" class="title is-4">Whole Scene Reconstruction</h3>
         <div class="content has-text-justified">
         </div>
         <div class="content has-text-centered">
           <video id="replay-video" controls="" muted="" width="65%">
-            <source src="static/videos/SurfelNeRF_video.mp4" type="video/mp4">
+            <source src="static/videos/video.mp4" type="video/mp4">
           </video>
         </div>
         <!-- ScanNet Main -->
@@ -261,11 +262,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{gao2023surfelnerf,
-  author    = {Gao, Yiming and Cao, Yan-Pei and Shan, Ying },
-  title     = {SurfelNeRF: Neural Surfel Radiance Fields for Online Photorealistic Reconstruction of Indoor Scenes},
-  journal   = {CVPR},
-  year      = {2023},
+    <pre><code>@article{wang2024freesplat,
+  title={FreeSplat: Generalizable 3D Gaussian Splatting Towards Free-View Synthesis of Indoor Scenes},
+  author={Wang, Yunsong and Huang, Tianxin and Chen, Hanlin and Lee, Gim Hee},
+  journal={arXiv preprint arXiv:2405.17958},
+  year={2024}
 }</code></pre>
   </div>
 </section>
@@ -275,7 +276,7 @@
   <div class="container">
     <div align="center" class="content has-text-centered">
       <a class="icon-link"
-         href="https://arxiv.org/abs/2304.08971">
+         href="https://arxiv.org/abs/2405.17958">
         <i class="fas fa-file-pdf"></i>
       </a>
 <!--      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>-->
