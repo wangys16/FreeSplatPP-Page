@@ -86,9 +86,9 @@
     <div class="container ">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">FreeSplat: Generalizable 3D Gaussian Splatting Towards Free-View Synthesis of Indoor Scenes</h1>
+          <h1 class="title is-1 publication-title">FreeSplat++: Generalizable 3D Gaussian Splatting for Efficient Indoor Scene Reconstruction</h1>
           <div class="is-size-5 intro">
-            <h2><strong>NeurIPS 2024</strong></h2>
+            <h2><strong>Arxiv 2025</strong></h2>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -109,7 +109,7 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://arxiv.org/pdf/2405.17958"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -126,7 +126,7 @@
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Video Link. -->
 <!--              <span class="link-block">-->
 <!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
@@ -139,7 +139,7 @@
 <!--              </span>-->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/wangys16/FreeSplat"
+                <a href="https://github.com/wangys16/FreeSplat++"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -199,19 +199,10 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Empowering 3D Gaussian Splatting with generalization ability is appealing. 
-            However, existing generalizable 3D Gaussian Splatting methods are largely confined to narrow-range interpolation between stereo images 
-            due to their heavy backbones, thus lacking the ability to accurately localize 3D Gaussian and support free-view synthesis across wide view range. 
-            In this paper, we present a novel framework FreeSplat that is capable of reconstructing geometrically 
-            consistent 3D scenes from long sequence input towards free-view synthesis.
-            Specifically, we firstly introduce Low-cost Cross-View Aggregation 
-            achieved by constructing adaptive cost volumes among nearby views and aggregating features using a multi-scale structure. 
-            Subsequently, we present the Pixel-wise Triplet Fusion 
-            to eliminate redundancy of 3D Gaussians in overlapping view regions and to aggregate features observed across multiple views. 
-            Additionally, we propose a simple but effective free-view training strategy 
-            that ensures robust view synthesis across broader view range regardless of the number of views.
-            Our empirical results demonstrate state-of-the-art novel view synthesis peformances in both novel view rendered color maps quality and depth maps accuracy across different numbers of input views. 
-            We also show that FreeSplat performs inference more efficiently and can effectively reduce redundant Gaussians, offering the possibility of feed-forward large scene reconstruction without depth priors. 
+            Recently, integrating the efficient feed-forward scheme into 3D Gaussian Splatting (3DGS) has been actively explored. However, existing methods mostly focus on sparse view reconstruction of small regions and cannot produce eligible whole scene reconstruction results in terms of either quality or efficiency. In this paper, we propose FreeSplat++, which focuses on extending the generalizable 3DGS to become an alternative approach to large-scale indoor scene reconstruction, which has the potential of significantly accelerating the reconstruction speed and improving the geometric accuracy. 
+  We initially propose a Low-cost Cross-View Aggregation framework designed to efficiently process extremely long input sequences, thereby facilitating whole scene reconstruction. Subsequently, we introduce a carefully designed pixel-wise triplet fusion method to incrementally aggregate the overlapping 3D Gaussians from multiple views, in order to adaptively mitigate the redundancy of 3D Gaussians. Furthermore, given the fused 3D gaussians with accumulated weights after the fusion step, we propose a weighted floater removal strategy that can effectively reduce floaters, which serves as an explicit depth fusion approach that is tailored for generalizable 3DGS methods and becomes crucial in whole scene reconstruction.  
+  To further enhance performance, we have investigated a depth-regularized per-scene fine-tuning process. This process leverages the dense, multi-view consistent depth maps obtained during the feed-forward prediction phase. The aim is to simultaneously improve rendering quality and maintain geometric accuracy. 
+  Empirical evidence suggests that our FreeSplat++ significantly outperforms existing generalizable 3DGS methods especially in whole scene reconstructions, and the per-scene fine-tuned results demonstrate substantial improvements in reconstruction accuracy and a notable reduction in training time relative to conventional per-scene optimized 3DGS approaches.
           </p>
         </div>
         </div>
@@ -225,13 +216,11 @@
   <h2 class="title is-3">Framework</h2>
   <div class="content has-text-justified">
   <div align="center" style="margin-top:40px;">
-    <img style="height: auto; width: 75%; object-fit: contain" src="static/images/framework_new.jpg" alt="overview_image">
+    <img style="height: auto; width: 75%; object-fit: contain" src="static/page/framework.jpg" alt="overview_image">
   </div>
     <p>
-    Framework of FreeSplat. Given input sparse sequence of images, we construct cost volumes between nearby views and predict depth maps and corresponding feature maps, followed by unprojection to Gaussian triplets with 3D positions. 
-      We then propose Pixel-aligned Triplet Fusion (PTF) module, where we progressively aggregate and update local/global Gaussian triplets based on pixel-wise alignment. The global Gaussian triplets can be later decoded into Gaussian parameters.</p>
-    <!--  -->
-  
+      Framework of FreeSplat++. The high-level design of FreeSplat++ includes: 
+      (a) Feed-Forward Gaussians Initialization. (b) Weighted Floater Removal. (c) Depth-Regularized Fine-tuning.<!--  -->
   </div>
   </div>
   </div>
@@ -243,11 +232,11 @@
   <div class="columns is-centered has-text-centered">
   <div class="column is-four-fifths">
         <h2 align="center" class="title is-2">Results</h2>
-        <h3 align="center" style="margin-top:80px;" class="title is-4">Long Sequence Reconstruction</h3>
+        <h3 align="center" style="margin-top:80px;" class="title is-4">Whole Scene Reconstruction</h3>
         <div class="content has-text-justified">
         </div>
         <div class="content has-text-centered">
-          <img style="height: auto; width: 75%; object-fit: contain" src="static/images/long_qual.jpg" alt="long_qual">
+          <img style="height: auto; width: 75%; object-fit: contain" src="static/page/qual_whole.jpg" alt="qual_whole">
         </div>
 
         <!-- ScanNet Main -->
@@ -259,7 +248,7 @@
             <source src="static/videos/video.mp4" type="video/mp4">
           </video>
         </div> -->
-    <section class="hero teaser">
+    <!-- <section class="hero teaser">
         <div class="container is-max-desktop">
           <div class="hero-body">
             <h3 align="center" style="margin-top:80px;" class="title is-4">Whole Scene Reconstruction (Left: Rendered RGB; Right: Rendered Depth)</h3>
@@ -269,7 +258,7 @@
             </video>
           </div>
         </div>
-      </section>
+      </section> -->
         <!-- ScanNet Main -->
 
       </div>
@@ -281,7 +270,7 @@
 </section>
 
 
-<section class="section" id="BibTeX">
+<!-- <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{wang2024freesplat,
@@ -291,7 +280,7 @@
   year={2024}
 }</code></pre>
   </div>
-</section>
+</section> -->
 
 
 <footer class="footer">
@@ -301,9 +290,6 @@
          href="https://arxiv.org/abs/2405.17958">
         <i class="fas fa-file-pdf"></i>
       </a>
-<!--      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>-->
-<!--        <i class="fab fa-github"></i>-->
-<!--      </a>-->
     </div>
     <div class="container" align="center">
       <div class="column is-centered">
